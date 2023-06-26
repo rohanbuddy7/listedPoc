@@ -24,9 +24,9 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/dashboard"
-                style="@style/tv_medium_black"
+                style="@style/tv_semibold_black"
                 android:textColor="@color/white"
-                android:textSize="@dimen/large"/>
+                android:textSize="@dimen/large1"/>
 
             <ImageView
                 android:layout_width="wrap_content"

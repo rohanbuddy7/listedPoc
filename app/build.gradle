@@ -43,4 +43,7 @@ dependencies {
 
     def gson_version = "2.9.0"
     implementation "com.google.code.gson:gson:$gson_version"
+
+    def nav_version = '2.6.0'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
 }

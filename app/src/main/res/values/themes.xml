@@ -10,4 +10,17 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+
+    <style name="BottomNav.ActiveItemTexts" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="BottomNav.InactiveItemTexts" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">13dp</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
 </resources>

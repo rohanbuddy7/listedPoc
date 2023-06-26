@@ -12,6 +12,11 @@
         android:title="@string/courses" />
 
     <item
+        android:id="@+id/navigation_add"
+        android:title="" />
+
+
+    <item
         android:id="@+id/navigation_campaigns"
         android:icon="@drawable/ic_campaigns"
         android:title="@string/campaigns" />

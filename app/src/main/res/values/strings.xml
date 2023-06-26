@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ListedPoc</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="overview">Overview</string>
+    <string name="viewAnalytics">View Analytics</string>
+    <string name="topLinks">Top Links</string>
+    <string name="recentLinks">Recent Links</string>
+    <string name="clicks">Clicks</string>
+    <string name="talkWithUs">Talk with us</string>
+    <string name="frequentlyAskedQuestions">Frequently Asked Questions</string>
+    <string name="profile">Profile</string>
+    <string name="campaigns">Campaigns</string>
+    <string name="courses">Courses</string>
+    <string name="links">Links</string>
 </resources>

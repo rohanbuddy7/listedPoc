@@ -4,4 +4,5 @@
     <dimen name="regular">16sp</dimen>
     <dimen name="large">20sp</dimen>
     <dimen name="large1">22sp</dimen>
+    <dimen name="large2">24sp</dimen>
 </resources>

@@ -67,7 +67,7 @@
         android:layout_alignParentBottom="true"
         app:itemTextAppearanceActive="@style/BottomNav.ActiveItemTexts"
         app:itemTextAppearanceInactive="@style/BottomNav.InactiveItemTexts"
-        android:paddingVertical="5dp"
+        android:paddingVertical="6dp"
         app:elevation="10dp"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/nav_menu"/>
@@ -80,7 +80,7 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/app_name"
         app:tint="@color/white"
-        app:elevation="11dp"
+        app:elevation="10dp"
         android:src="@drawable/ic_add"
         android:foregroundGravity="center"
         android:backgroundTint="@color/col_0E6FFF"

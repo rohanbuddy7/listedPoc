@@ -12,12 +12,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.LineData
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.rohan.listedpoc.R
 import com.rohan.listedpoc.data.response.DashboardResponse
 import com.rohan.listedpoc.data.response.Links
 import com.rohan.listedpoc.databinding.FragmentLinksBinding
+import com.rohan.listedpoc.utils.ChartHelper
 import com.rohan.listedpoc.utils.CommonUtils.getWish
 import com.rohan.listedpoc.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +52,6 @@ class LinksFragment : Fragment() {
         apicall()
         setup()
         observers()
-
     }
 
     private fun apicall() {
@@ -91,6 +95,7 @@ class LinksFragment : Fragment() {
         adapter = LinksAdapter(requireContext())
         binding?.recyclerLinks?.adapter = adapter
         binding?.textWish?.text = getWish()
+
 
     }
 
@@ -139,9 +144,24 @@ class LinksFragment : Fragment() {
         }
 
         updateList(dashboardResponse.data?.topLinks)
-
+        initChart()
         this.dashboardResponse = dashboardResponse;
 
+    }
+
+    private fun initChart() {
+        val data = LineData(ChartHelper.setLineChartData(requireContext(), resources))
+        binding?.chart?.data = data
+        binding?.chart?.setBackgroundColor(resources.getColor(R.color.white))
+        binding?.chart?.animateXY(2000, 2000, Easing.EaseInCubic)
+        binding?.chart?.axisRight?.isEnabled = false;
+        binding?.chart?.xAxis?.position = XAxis.XAxisPosition.BOTTOM
+        binding?.chart?.xAxis?.axisLineColor = resources.getColor(R.color.col_F5F5F5)
+        binding?.chart?.axisLeft?.axisLineColor = resources.getColor(R.color.col_F5F5F5)
+        binding?.chart?.xAxis?.textColor = resources.getColor(R.color.col_999CA0)
+        binding?.chart?.axisLeft?.textColor = resources.getColor(R.color.col_999CA0)
+        binding?.chart?.setGridBackgroundColor(resources.getColor(R.color.col_F5F5F5))
+        binding?.chart?.invalidate();
     }
 
     fun updateList(links: List<Links?>?){

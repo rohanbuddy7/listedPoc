@@ -78,12 +78,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:contentDescription="@string/app_name"
-        app:tint="@color/white"
-        app:elevation="10dp"
-        android:src="@drawable/ic_add"
-        android:foregroundGravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/col_0E6FFF"
-        android:layout_margin="10dp" />
+        android:contentDescription="@string/app_name"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_add"
+        app:elevation="10.2dp"
+        app:tint="@color/white" />
 
 </RelativeLayout>

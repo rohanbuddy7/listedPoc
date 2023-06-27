@@ -74,4 +74,8 @@ dependencies {
     //add due to kotlin and hilt version compatiblity
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 
+    def chart_version = "3.1.0"
+    implementation "com.github.PhilJay:MPAndroidChart:v$chart_version"
+
+
 }

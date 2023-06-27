@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
+    android:layout_margin="7dp"
     app:cardElevation="0dp"
     android:background="@color/white"
     app:cardCornerRadius="10dp">
@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="8dp"
         android:orientation="vertical">
 
         <ImageView
@@ -26,19 +26,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="123"
+            android:text="-"
             style="@style/tv_semibold_black"
             android:textColor="@color/black"
-            android:textSize="@dimen/large2"/>
+            android:textSize="@dimen/large1"/>
 
         <TextView
             android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/todayClicks"
             style="@style/tv_regular_black"

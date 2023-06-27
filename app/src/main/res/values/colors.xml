@@ -19,5 +19,6 @@
     <color name="col_D8D8D8">#D8D8D8</color>
     <color name="col_3CC24A">#3CC24A</color>
     <color name="col_1053FD">#1053FD</color>
+    <color name="transparent">#00FFFFFF</color>
 
 </resources>

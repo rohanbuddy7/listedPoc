@@ -9,24 +9,25 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.gson.JsonObject
 import com.rohan.listedpoc.R
 import com.rohan.listedpoc.data.response.DashboardResponse
 import com.rohan.listedpoc.data.response.Links
 import com.rohan.listedpoc.databinding.FragmentLinksBinding
 import com.rohan.listedpoc.utils.ChartHelper
 import com.rohan.listedpoc.utils.CommonUtils.getWish
+import com.rohan.listedpoc.utils.DateUtils.convertDateFormatForChart
 import com.rohan.listedpoc.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -144,13 +145,23 @@ class LinksFragment : Fragment() {
         }
 
         updateList(dashboardResponse.data?.topLinks)
-        initChart()
+        initChart(dashboardResponse.data?.overallUrlChart)
         this.dashboardResponse = dashboardResponse;
 
     }
 
-    private fun initChart() {
-        val data = LineData(ChartHelper.setLineChartData(requireContext(), resources))
+    private fun initChart(overallUrlChart: JsonObject?) {
+
+        val dates = ArrayList<String>();
+        val lineValues = ArrayList<Entry>();
+
+        overallUrlChart?.keySet()?.forEachIndexed { index, key ->
+            val value = overallUrlChart[key]
+            dates.add(convertDateFormatForChart(key))
+            lineValues.add(Entry(index.toFloat(), value.asFloat))
+        }
+
+        val data = LineData(ChartHelper.setLineChartData(requireContext(), resources, lineValues))
         binding?.chart?.data = data
         binding?.chart?.setBackgroundColor(resources.getColor(R.color.white))
         binding?.chart?.animateXY(2000, 2000, Easing.EaseInCubic)
@@ -161,6 +172,7 @@ class LinksFragment : Fragment() {
         binding?.chart?.xAxis?.textColor = resources.getColor(R.color.col_999CA0)
         binding?.chart?.axisLeft?.textColor = resources.getColor(R.color.col_999CA0)
         binding?.chart?.setGridBackgroundColor(resources.getColor(R.color.col_F5F5F5))
+        binding?.chart?.xAxis?.valueFormatter = IndexAxisValueFormatter(dates)
         binding?.chart?.invalidate();
     }
 

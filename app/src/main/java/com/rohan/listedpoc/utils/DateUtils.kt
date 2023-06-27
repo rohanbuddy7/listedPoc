@@ -17,4 +17,16 @@ object DateUtils {
             ""
         }
     }
+
+    fun convertDateFormatForChart(dateString: String?): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMMM", Locale.getDefault())
+        return try {
+            val date = inputFormat.parse(dateString)
+            outputFormat.format(date)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            ""
+        }
+    }
 }

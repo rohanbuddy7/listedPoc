@@ -1,4 +1,5 @@
 package com.rohan.listedpoc.data.response
+import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 
 data class DashboardResponse(
@@ -130,7 +131,7 @@ data class OverallUrlChart(
 
 data class Data(
     @SerializedName("overall_url_chart")
-    val overallUrlChart: OverallUrlChart?,
+    val overallUrlChart: JsonObject?,
     @SerializedName("recent_links")
     val recentLinks: List<Links?>?,
     @SerializedName("top_links")

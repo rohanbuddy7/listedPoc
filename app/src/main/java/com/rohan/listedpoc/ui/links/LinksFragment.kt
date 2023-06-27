@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.rohan.listedpoc.R
+import com.rohan.listedpoc.data.response.DashboardResponse
 import com.rohan.listedpoc.data.response.Links
 import com.rohan.listedpoc.databinding.FragmentLinksBinding
 import com.rohan.listedpoc.utils.NetworkResult
@@ -77,11 +79,37 @@ class LinksFragment : Fragment() {
         lifecycleScope.launch {
             viewmodel.dashboardRes.collect(){
                 when(it){
-                    is NetworkResult.Success->{}
+                    is NetworkResult.Success->{
+                        inflateData(it.data!!)
+                    }
                     is NetworkResult.Error->{}
                     is NetworkResult.Loading->{}
                 }
             }
+        }
+    }
+
+    private fun inflateData(dashboardResponse: DashboardResponse) {
+        binding?.statusTodaysclick?.let {
+             it.imageStatus.let {
+                 Glide.with(requireContext()).load(R.drawable.ic_clicks).into(it)
+             }
+            it.textData.text = dashboardResponse.todayClicks.toString()
+            it.textTitle.text = resources.getString(R.string.todayClicks)
+        }
+        binding?.statusToplocation?.let {
+            it.imageStatus.let {
+                Glide.with(requireContext()).load(R.drawable.ic_location).into(it)
+            }
+            it.textData.text = dashboardResponse.topLocation.toString()
+            it.textTitle.text = resources.getString(R.string.topLocation)
+        }
+        binding?.statusTopsource?.let {
+            it.imageStatus.let {
+                Glide.with(requireContext()).load(R.drawable.ic_source).into(it)
+            }
+            it.textData.text = dashboardResponse.topSource.toString()
+            it.textTitle.text = resources.getString(R.string.topSource)
         }
     }
 

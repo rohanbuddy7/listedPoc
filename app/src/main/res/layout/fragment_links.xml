@@ -117,6 +117,8 @@
                 android:id="@+id/tablayout"
                 android:layout_weight="1"
                 android:layout_width="0dp"
+                app:tabRippleColor="@null"
+                app:tabIndicatorFullWidth="false"
                 app:tabIndicator="@null"
                 android:layout_marginEnd="10dp"
                 android:layout_height="wrap_content"

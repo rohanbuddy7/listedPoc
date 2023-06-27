@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -84,7 +85,7 @@ class LinksFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab) {}
         }
-
+        adjustTabsWidth()
         binding?.tablayout?.addOnTabSelectedListener(tabSelectedListener)
         binding?.tablayout?.getTabAt(0)?.select()
         adapter = LinksAdapter(requireContext())
@@ -175,6 +176,19 @@ class LinksFragment : Fragment() {
             root?.setCardBackgroundColor(resources.getColor(R.color.col_F5F5F5))
             tv?.setTextColor(resources.getColor(R.color.col_999CA0))
         }
+    }
+
+    fun adjustTabsWidth(){
+        val layout0 = (binding?.tablayout?.getChildAt(0) as LinearLayout).getChildAt(0) as LinearLayout
+        val layout1 = (binding?.tablayout?.getChildAt(0) as LinearLayout).getChildAt(1) as LinearLayout
+        val layoutParams0 = layout0.layoutParams as LinearLayout.LayoutParams
+        val layoutParams1 = layout1.layoutParams as LinearLayout.LayoutParams
+        layoutParams0.weight = 0f
+        layoutParams1.weight = 0f
+        layoutParams0.width = LinearLayout.LayoutParams.WRAP_CONTENT
+        layoutParams1.width = LinearLayout.LayoutParams.WRAP_CONTENT
+        layout0.layoutParams = layoutParams0
+        layout1.layoutParams = layoutParams1
     }
 
 }

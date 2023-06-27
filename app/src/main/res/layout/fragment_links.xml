@@ -107,7 +107,7 @@
             app:strokeWidth="1dp"
             android:stateListAnimator="@null" />
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -115,8 +115,7 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tablayout"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 app:tabRippleColor="@null"
                 app:tabIndicatorFullWidth="false"
                 app:tabIndicator="@null"
@@ -131,7 +130,7 @@
                 android:layout_gravity="end"
                 android:padding="10dp"/>
 
-        </LinearLayout>
+        </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_links"

@@ -9,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.rohan.listedpoc.R
 import com.rohan.listedpoc.databinding.ActivityHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity: AppCompatActivity() {
 
     var binding : ActivityHomeBinding? = null

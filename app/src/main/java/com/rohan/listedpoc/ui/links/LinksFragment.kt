@@ -11,8 +11,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.rohan.listedpoc.R
 import com.rohan.listedpoc.databinding.FragmentLinksBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class LinksFragment : Fragment() {
 
     private var binding: FragmentLinksBinding? = null

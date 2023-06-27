@@ -9,11 +9,15 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="col_0E6FFF">#0E6FFF</color>
+    <color name="col_720E6FFF">#630E6FFF</color>
     <color name="col_999CA0">#999CA0</color>
     <color name="col_F5F5F5">#F5F5F5</color>
-    <color name="col_A6C7FF">#6AA6C7FF</color>
+    <color name="col_A6C7FF">#4AA6C7FF</color>
     <color name="col_D9EFDC">#D9EFDC</color>
     <color name="col_A4E3AB">#A4E3AB</color>
+    <color name="col_80A4E3AB">#4BA4E3AB</color>
     <color name="col_D8D8D8">#D8D8D8</color>
+    <color name="col_3CC24A">#3CC24A</color>
+    <color name="col_1053FD">#1053FD</color>
 
 </resources>

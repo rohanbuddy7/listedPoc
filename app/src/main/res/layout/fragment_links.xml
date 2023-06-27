@@ -118,6 +118,72 @@
             tools:itemCount="5"
             tools:listitem="@layout/card_links"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/viewAllLinks"
+            android:textAllCaps="false"
+            android:padding="10dp"
+            style="@style/tv_semibold_black"
+            android:textSize="@dimen/large"
+            android:letterSpacing="0"
+            app:icon="@drawable/ic_links"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp"
+            app:iconTint="@color/black"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/col_F5F5F5"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/col_D8D8D8"
+            app:strokeWidth="1dp"
+            android:stateListAnimator="@null" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/talkWithUs"
+            android:textAllCaps="false"
+            android:padding="20dp"
+            style="@style/tv_semibold_black"
+            android:gravity="start"
+            android:textSize="@dimen/regular"
+            android:letterSpacing="0"
+            app:icon="@drawable/ic_whatsapp"
+            app:iconGravity="start"
+            app:iconPadding="10dp"
+            app:iconTint="@color/col_3CC24A"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/col_80A4E3AB"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/col_A4E3AB"
+            app:strokeWidth="1dp"
+            android:stateListAnimator="@null" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/frequentlyAskedQuestions"
+            android:textAllCaps="false"
+            android:padding="20dp"
+            style="@style/tv_semibold_black"
+            android:gravity="start"
+            android:textSize="@dimen/regular"
+            android:letterSpacing="0"
+            app:icon="@drawable/ic_faq"
+            app:iconGravity="start"
+            app:iconPadding="10dp"
+            app:iconTint="@color/col_1053FD"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/col_A6C7FF"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/col_720E6FFF"
+            app:strokeWidth="1dp"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="50dp"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.core.widget.NestedScrollView>

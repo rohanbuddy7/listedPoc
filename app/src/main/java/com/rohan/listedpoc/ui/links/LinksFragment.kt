@@ -17,6 +17,7 @@ import com.rohan.listedpoc.R
 import com.rohan.listedpoc.data.response.DashboardResponse
 import com.rohan.listedpoc.data.response.Links
 import com.rohan.listedpoc.databinding.FragmentLinksBinding
+import com.rohan.listedpoc.utils.CommonUtils.getWish
 import com.rohan.listedpoc.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -88,6 +89,7 @@ class LinksFragment : Fragment() {
         binding?.tablayout?.getTabAt(0)?.select()
         adapter = LinksAdapter(requireContext())
         binding?.recyclerLinks?.adapter = adapter
+        binding?.textWish?.text = getWish()
 
     }
 

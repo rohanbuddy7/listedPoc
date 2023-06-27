@@ -80,7 +80,7 @@
             app:iconPadding="10dp"
             app:iconTint="@color/black"
             android:textColor="@color/black"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/col_F5F5F5"
             app:cornerRadius="10dp"
             app:strokeColor="@color/col_D8D8D8"
             app:strokeWidth="1dp"

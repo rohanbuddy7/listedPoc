@@ -27,10 +27,13 @@ class LinksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupTabs()
+
+        setup()
+
+
     }
 
-    private fun setupTabs() {
+    private fun setup() {
 
         binding?.tablayout.let {
             it?.addTab(it.newTab().setCustomView(createCustomTabView(resources.getString(R.string.topLinks), true)));
@@ -51,6 +54,8 @@ class LinksFragment : Fragment() {
 
         binding?.tablayout?.addOnTabSelectedListener(tabSelectedListener)
         binding?.tablayout?.getTabAt(0)?.select()
+
+        binding?.recyclerLinks?.adapter = LinksAdapter(requireContext())
 
     }
 

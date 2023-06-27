@@ -26,8 +26,10 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LinksFragment : Fragment() {
 
+    private var adapter: LinksAdapter? = null
     private var binding: FragmentLinksBinding? = null
     private val viewmodel by viewModels<LinksViewModel>()
+    private var dashboardResponse: DashboardResponse? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +61,20 @@ class LinksFragment : Fragment() {
         val tabSelectedListener: OnTabSelectedListener = object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 upadteFontWhileSwitching(tab, tab.isSelected)
+                val position = tab.position
+                when(position){
+                    0->{
+                        if(dashboardResponse!=null){
+                            updateList(dashboardResponse!!.data?.topLinks)
+                        }
+                    }
+                    1->{
+                        if(dashboardResponse!=null){
+                            updateList(dashboardResponse!!.data?.recentLinks)
+                        }
+                    }
+                }
+
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -70,7 +86,8 @@ class LinksFragment : Fragment() {
 
         binding?.tablayout?.addOnTabSelectedListener(tabSelectedListener)
         binding?.tablayout?.getTabAt(0)?.select()
-        binding?.recyclerLinks?.adapter = LinksAdapter(requireContext())
+        adapter = LinksAdapter(requireContext())
+        binding?.recyclerLinks?.adapter = adapter
 
     }
 
@@ -110,6 +127,25 @@ class LinksFragment : Fragment() {
             }
             it.textData.text = dashboardResponse.topSource.toString()
             it.textTitle.text = resources.getString(R.string.topSource)
+        }
+
+        dashboardResponse.data?.topLinks?.let{ links ->
+            adapter?.addData(links = links);
+        }?: kotlin.run {
+            print("top link is null")
+        }
+
+        updateList(dashboardResponse.data?.topLinks)
+
+        this.dashboardResponse = dashboardResponse;
+
+    }
+
+    fun updateList(links: List<Links?>?){
+        links?.let{
+            adapter?.addData(links = it);
+        }?: kotlin.run {
+            print("link is null")
         }
     }
 

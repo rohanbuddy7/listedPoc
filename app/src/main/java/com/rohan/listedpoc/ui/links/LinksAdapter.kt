@@ -14,7 +14,7 @@ import com.rohan.listedpoc.utils.DateUtils
 
 class LinksAdapter(var context: Context): RecyclerView.Adapter<LinksAdapter.ViewHolder>() {
 
-    var list = arrayListOf<Links>();
+    var list = arrayListOf<Links?>();
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.card_links, parent, false)
@@ -28,11 +28,11 @@ class LinksAdapter(var context: Context): RecyclerView.Adapter<LinksAdapter.View
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val data = list[position]
-        holder.textLinkName.text = data.app
-        holder.textLinkDate.text = DateUtils.convertDateFormat(data.createdAt)
-        holder.textLink.text = data.webLink
+        holder.textLinkName.text = data?.app
+        holder.textLinkDate.text = DateUtils.convertDateFormat(data?.createdAt)
+        holder.textLink.text = data?.webLink
         holder.imageLink.let {
-            Glide.with(context).load(data.originalImage).into(it)
+            Glide.with(context).load(data?.originalImage).into(it)
         }
 
     }
@@ -52,7 +52,7 @@ class LinksAdapter(var context: Context): RecyclerView.Adapter<LinksAdapter.View
         }
     }
 
-    fun addData(links: List<Links>){
+    fun addData(links: List<Links?>){
         list.clear()
         list.addAll(links)
         notifyDataSetChanged()

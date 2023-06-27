@@ -7,17 +7,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.rohan.listedpoc.R
+import com.rohan.listedpoc.data.response.Links
 import com.rohan.listedpoc.databinding.FragmentLinksBinding
+import com.rohan.listedpoc.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class LinksFragment : Fragment() {
 
     private var binding: FragmentLinksBinding? = null
+    private val viewmodel by viewModels<LinksViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,9 +38,14 @@ class LinksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        apicall()
         setup()
+        observers()
 
+    }
 
+    private fun apicall() {
+        viewmodel.getDashboard()
     }
 
     private fun setup() {
@@ -41,7 +54,6 @@ class LinksFragment : Fragment() {
             it?.addTab(it.newTab().setCustomView(createCustomTabView(resources.getString(R.string.topLinks), true)));
             it?.addTab(it.newTab().setCustomView(createCustomTabView(resources.getString(R.string.recentLinks), false)));
         }
-
         val tabSelectedListener: OnTabSelectedListener = object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 upadteFontWhileSwitching(tab, tab.isSelected)
@@ -56,9 +68,21 @@ class LinksFragment : Fragment() {
 
         binding?.tablayout?.addOnTabSelectedListener(tabSelectedListener)
         binding?.tablayout?.getTabAt(0)?.select()
-
         binding?.recyclerLinks?.adapter = LinksAdapter(requireContext())
 
+    }
+
+    private fun observers() {
+
+        lifecycleScope.launch {
+            viewmodel.dashboardRes.collect(){
+                when(it){
+                    is NetworkResult.Success->{}
+                    is NetworkResult.Error->{}
+                    is NetworkResult.Loading->{}
+                }
+            }
+        }
     }
 
     private fun createCustomTabView(tabText: String, active: Boolean): View {

@@ -27,8 +27,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
@@ -70,5 +70,8 @@ dependencies {
     def coroutines_version = "1.6.4"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //add due to kotlin and hilt version compatiblity
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 
 }

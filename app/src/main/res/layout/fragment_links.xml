@@ -31,6 +31,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <!--Have kept it constant as their is no name field in api response -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,13 +58,32 @@
             app:cardElevation="0dp"
             app:cardCornerRadius="10dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_updates"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:listitem="@layout/card_updates"/>
+            android:layout_marginTop="15dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/status_todaysclick"
+                    layout="@layout/card_updates"/>
+
+                <include
+                    android:id="@+id/status_toplocation"
+                    layout="@layout/card_updates"/>
+
+                <include
+                    android:id="@+id/status_topsource"
+                    layout="@layout/card_updates"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
@@ -89,6 +109,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <com.google.android.material.tabs.TabLayout
